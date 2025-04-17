@@ -1,22 +1,22 @@
 package com.example.retrofit.model
 
 data class Current(
-    val air_quality: AirQuality,
+    val airQuality: AirQuality,
     val astro: Astro,
     val cloudcover: Int,
     val feelslike: Int,
     val humidity: Int,
-    val is_day: String,
-    val observation_time: String,
+    val isDay: String,
+    val observationTime: String,
     val precip: Int,
     val pressure: Int,
     val temperature: Int,
-    val uv_index: Int,
+    val uvIndex: Int,
     val visibility: Int,
-    val weather_code: Int,
-    val weather_descriptions: List<String>,
-    val weather_icons: List<String>,
-    val wind_degree: Int,
-    val wind_dir: String,
-    val wind_speed: Int
+    val weatherCode: Int,
+    val weatherDescriptions: List<String>,
+    val weatherIcons: List<String>,
+    val windDegree: Int,
+    val windDir: String,
+    val windSpeed: Int
 )

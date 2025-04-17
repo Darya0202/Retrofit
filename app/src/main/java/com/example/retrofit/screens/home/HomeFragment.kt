@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofit.R
 import com.example.retrofit.databinding.FragmentHomeBinding
+import com.example.retrofit.screens.detail.DetailFragment
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -26,16 +28,20 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
-        val adapter = HomeAdapter()
-        binding.rvHome.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvHome.adapter = adapter
+        val adapter = HomeAdapter { city ->
+            val bundle = Bundle().apply {
+                putString("city", city)
+            }
 
-        val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        viewModel.getWeather()
-        viewModel.myList.observe(viewLifecycleOwner) { list ->
-            adapter.setList(list)
+            findNavController().navigate(
+                R.id.action_homeFragment_to_detailFragment,
+                Bundle().apply { putString("city", city) }
+            )
         }
+        adapter.setCityList(viewModel.cityList)
+        binding.rvHome.adapter = adapter
 
     }
 

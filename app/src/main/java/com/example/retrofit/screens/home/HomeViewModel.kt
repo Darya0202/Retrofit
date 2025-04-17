@@ -8,14 +8,21 @@ import com.example.retrofit.model.WeatherResponse
 import kotlinx.coroutines.launch
 
 class HomeViewModel: ViewModel() {
-
-    var repo = RepositoryImpl()
-    val myList: MutableLiveData<ArrayList<WeatherResponse>> = MutableLiveData()
-
-    fun getWeather(){
-        viewModelScope.launch {
-            myList.value = repo.getWeather()
-        }
-    }
-
+    val cityList = listOf(
+        "Moscow",
+        "Volgograd",
+        "Saint Petersburg",
+        "Kazan",
+        "Tokyo",
+        "Madrid",
+        "Istanbul",
+        "Beijing",
+        "Seoul",
+        "New York",
+        "Toronto",
+        "London",
+        "Mumbai",
+        "Paris",
+        "Rome"
+    )
 }

@@ -4,17 +4,22 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.retrofit.databinding.ItemLayoutBinding
-import com.example.retrofit.model.WeatherResponse
 
 
-class HomeAdapter:RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+class HomeAdapter(
+    private val onItemClick: (String) -> Unit
+):RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
-    var list_home = emptyList<WeatherResponse>()
+    private var listHome = listOf<String>()
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun setCityList(list: List<String>) {
+        listHome = list
+        notifyDataSetChanged()
+    }
 
-    class HomeViewHolder(val binding: ItemLayoutBinding):RecyclerView.ViewHolder(binding.root)
+    class HomeViewHolder(val binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -22,23 +27,16 @@ class HomeAdapter:RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return list_home.size
+        return listHome.size
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        holder.binding.city.text = list_home[position].location.name
-        holder.binding.weatherDescriptions.text = list_home[position].current.weatherDescriptions.firstOrNull() ?: ""
-        holder.binding.degrees.text = "${list_home[position].current.temperature}°C"
+        val city = listHome[position]
+        holder.binding.city.text = city
 
-        Glide.with(holder.binding.image.context)
-            .load(list_home[position].current.weatherIcons.firstOrNull())
-            .into(holder.binding.image)
+        holder.itemView.setOnClickListener {
+            onItemClick(city)
+        }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun setList(list: List<WeatherResponse>){
-        list_home = list
-        notifyDataSetChanged()
-    }
 }

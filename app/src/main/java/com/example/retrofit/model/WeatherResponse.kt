@@ -3,17 +3,19 @@ package com.example.retrofit.model
 import com.google.gson.annotations.SerializedName
 
 data class WeatherResponse(
-    val location: WeatherLocation,
-    val current: WeatherCurrent
+    val location: WeatherLocation? = null,
+    val current: WeatherCurrent? = null
 )
 
 data class WeatherLocation(
-    val name: String,
-    val region: String
+    val name: String? = null,
+    val region: String? = null
 )
 
 data class WeatherCurrent(
-    val temperature: Int,
-    @SerializedName("weather_descriptions") val weatherDescriptions: List<String>,
-    @SerializedName("weather_icons") val weatherIcons: List<String>
+    val temperature: Int? = null,
+    @SerializedName("weather_descriptions")
+    val weatherDescriptions: List<String>? = null,
+    @SerializedName("weather_icons")
+    val weatherIcons: List<String>? = null
 )

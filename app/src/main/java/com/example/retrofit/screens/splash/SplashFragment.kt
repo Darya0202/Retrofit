@@ -12,7 +12,6 @@ import com.example.retrofit.R
 
 class SplashFragment : Fragment() {
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -1,8 +1,8 @@
 package com.example.retrofit.model
 
 data class Astro(
-    val moon_illumination: Int,
-    val moon_phase: String,
+    val moonIllumination: Int,
+    val moonPhase: String,
     val moonrise: String,
     val moonset: String,
     val sunrise: String,
