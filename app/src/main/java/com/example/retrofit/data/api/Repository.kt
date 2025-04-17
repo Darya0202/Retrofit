@@ -8,7 +8,6 @@ import retrofit2.http.Query
 interface Repository {
     @GET("current")
     suspend fun getWeather(
-        @Query("access_key") key: String,
         @Query("query") city: String
     ): Response<WeatherResponse>
 }

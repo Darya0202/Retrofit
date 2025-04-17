@@ -1,12 +1,12 @@
 package com.example.retrofit.screens.detail
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.retrofit.data.repository.RepositoryImpl
 import com.example.retrofit.model.WeatherResponse
 import kotlinx.coroutines.launch
-import com.example.retrofit.BuildConfig
 
 class DetailViewModel: ViewModel() {
 
@@ -15,10 +15,11 @@ class DetailViewModel: ViewModel() {
 
     fun fetchWeather(city: String) {
         viewModelScope.launch {
-            val response = repository.getWeather(BuildConfig.API_KEY,city)
+            val response = repository.getWeather(city)
             if (response.isSuccessful) {
+                Log.d("API_RESPONSE", response.body().toString())
                 weather.value = response.body()
-            }
+            } else Log.e("API_ERROR", "Ошибка: ${response.code()} — ${response.message()}")
         }
     }
 }
