@@ -1,42 +1,38 @@
-package com.example.retrofit.screens.home
+package com.example.retrofit.screens.weather.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofit.R
-import com.example.retrofit.databinding.FragmentHomeBinding
-import com.example.retrofit.screens.detail.DetailFragment
+import com.example.retrofit.databinding.FragmentWeatherBinding
 
-class HomeFragment : Fragment() {
-    private var _binding: FragmentHomeBinding? = null
+class WeatherFragment : Fragment() {
+    private var _binding: FragmentWeatherBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater,container,false)
+        _binding = FragmentWeatherBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        val viewModel = ViewModelProvider(this)[WeatherViewModel::class.java]
 
-        val adapter = HomeAdapter { city ->
+        val adapter = WeatherAdapter { city ->
             val bundle = Bundle().apply {
                 putString("city", city)
             }
 
             findNavController().navigate(
-                R.id.action_homeFragment_to_detailFragment,
+                R.id.action_weatherFragment_to_detailWeatherFragment,
                 Bundle().apply { putString("city", city) }
             )
         }

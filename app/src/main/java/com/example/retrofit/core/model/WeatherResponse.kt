@@ -1,4 +1,4 @@
-package com.example.retrofit.model
+package com.example.retrofit.core.model
 
 import com.google.gson.annotations.SerializedName
 

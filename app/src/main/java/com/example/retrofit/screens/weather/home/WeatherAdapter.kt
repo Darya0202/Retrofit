@@ -1,15 +1,15 @@
-package com.example.retrofit.screens.home
+package com.example.retrofit.screens.weather.home
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.retrofit.databinding.ItemLayoutBinding
+import com.example.retrofit.databinding.ItemWeatherBinding
 
 
-class HomeAdapter(
+class WeatherAdapter(
     private val onItemClick: (String) -> Unit
-):RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+):RecyclerView.Adapter<WeatherAdapter.HomeViewHolder>() {
 
     private var listHome = listOf<String>()
 
@@ -19,10 +19,10 @@ class HomeAdapter(
         notifyDataSetChanged()
     }
 
-    class HomeViewHolder(val binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
+    class HomeViewHolder(val binding: ItemWeatherBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-        val binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemWeatherBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HomeViewHolder(binding)
     }
 

@@ -1,8 +1,6 @@
-package com.example.retrofit.screens.detail
+package com.example.retrofit.screens.weather.detail
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,22 +8,19 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.example.retrofit.BuildConfig
 import com.example.retrofit.R
-import com.example.retrofit.databinding.FragmentDetailBinding
-import com.example.retrofit.model.WeatherResponse
-import com.example.retrofit.screens.home.HomeViewModel
+import com.example.retrofit.databinding.FragmentDetailWeatherBinding
 
-class DetailFragment : Fragment() {
+class DetailWeatherFragment : Fragment() {
 
-    private var _binding: FragmentDetailBinding? = null
+    private var _binding: FragmentDetailWeatherBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentDetailBinding.inflate(layoutInflater,container,false)
+        _binding = FragmentDetailWeatherBinding.inflate(layoutInflater,container,false)
         return binding.root
     }
 
@@ -33,7 +28,7 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val city = arguments?.getString("city") ?: return
-        val viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
+        val viewModel = ViewModelProvider(this)[DetailWeatherViewModel::class.java]
         viewModel.fetchWeather(city)
         binding.city.text = city
 
@@ -46,7 +41,7 @@ class DetailFragment : Fragment() {
         }
 
         binding.buttonExit.setOnClickListener{
-            findNavController().navigate(R.id.action_detailFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_detailWeatherFragment_to_weatherFragment)
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.retrofit.screens.splash
+package com.example.retrofit.screens.weather.splash
 
 import android.os.Bundle
 import android.os.Handler
@@ -17,7 +17,7 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_splashFragment_to_rootFragment)
         }, 2000)
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }

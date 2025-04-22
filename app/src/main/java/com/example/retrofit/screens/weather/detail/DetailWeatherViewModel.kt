@@ -1,16 +1,19 @@
-package com.example.retrofit.screens.detail
+package com.example.retrofit.screens.weather.detail
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.retrofit.data.repository.RepositoryImpl
-import com.example.retrofit.model.WeatherResponse
+import com.example.retrofit.data.repository.NetworkRepositoryImpl
+import com.example.retrofit.core.model.WeatherResponse
+import com.example.retrofit.core.repository.DatabaseRepository
+import com.example.retrofit.core.repository.NetworkRepository
 import kotlinx.coroutines.launch
 
-class DetailViewModel: ViewModel() {
+class DetailWeatherViewModel(
+    val repository: NetworkRepository
+): ViewModel() {
 
-    private val repository = RepositoryImpl()
     val weather = MutableLiveData<WeatherResponse>()
 
     fun fetchWeather(city: String) {
