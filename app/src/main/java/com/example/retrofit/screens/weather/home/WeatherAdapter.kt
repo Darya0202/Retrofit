@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofit.databinding.ItemWeatherBinding
 
-
 class WeatherAdapter(
     private val onItemClick: (String) -> Unit
 ):RecyclerView.Adapter<WeatherAdapter.HomeViewHolder>() {
@@ -38,5 +37,4 @@ class WeatherAdapter(
             onItemClick(city)
         }
     }
-
 }

@@ -7,19 +7,29 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofit.data.db.NoteModel
 import com.example.retrofit.databinding.ItemNoteBinding
 
-class NoteAdapter(private val onNoteClick: (NoteModel) -> Unit): RecyclerView.Adapter<NoteAdapter.NoteViewHolder> () {
+class NoteAdapter(
+    private val onNoteClick: (NoteModel) -> Unit
+): RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
-    var listNote = emptyList<NoteModel>()
+    private var listNote = emptyList<NoteModel>()
 
-    class NoteViewHolder(private val viewBinding: ItemNoteBinding): RecyclerView.ViewHolder(viewBinding.root) {
+    class NoteViewHolder(
+        private val viewBinding: ItemNoteBinding
+    ): RecyclerView.ViewHolder(viewBinding.root) {
+
         fun bind(note: NoteModel) {
             viewBinding.itemTitle.text = note.title
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        val viewBinding = ItemNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return NoteViewHolder(viewBinding)
+        return NoteViewHolder(
+            ItemNoteBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {

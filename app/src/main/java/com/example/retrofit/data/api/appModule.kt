@@ -12,9 +12,6 @@ val appModule = module {
     viewModel { AddNoteViewModel(get()) }
     viewModel { DetailNoteViewModel(get()) }
     viewModel { NotesViewModel(get()) }
-
     viewModel { DetailWeatherViewModel(get()) }
     viewModel { WeatherViewModel() }
-
-
 }

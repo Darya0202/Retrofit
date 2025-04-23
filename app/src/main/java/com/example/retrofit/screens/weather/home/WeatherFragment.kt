@@ -27,10 +27,6 @@ class WeatherFragment : Fragment() {
         val viewModel = ViewModelProvider(this)[WeatherViewModel::class.java]
 
         val adapter = WeatherAdapter { city ->
-            val bundle = Bundle().apply {
-                putString("city", city)
-            }
-
             findNavController().navigate(
                 R.id.action_weatherFragment_to_detailWeatherFragment,
                 Bundle().apply { putString("city", city) }
@@ -45,5 +41,4 @@ class WeatherFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

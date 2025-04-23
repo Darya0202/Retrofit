@@ -4,9 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.retrofit.data.repository.NetworkRepositoryImpl
 import com.example.retrofit.core.model.WeatherResponse
-import com.example.retrofit.core.repository.DatabaseRepository
 import com.example.retrofit.core.repository.NetworkRepository
 import kotlinx.coroutines.launch
 

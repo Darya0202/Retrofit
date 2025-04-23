@@ -41,11 +41,8 @@ class DetailNoteFragment : Fragment() {
                 }
             }
         }
-
         binding.btnBack.setOnClickListener{
             findNavController().navigate(R.id.action_detailNoteFragment_to_notesFragment)
         }
-
     }
-
 }

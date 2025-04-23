@@ -19,5 +19,4 @@ class DatabaseRepositoryImpl(private val noteDao: NoteDao): DatabaseRepository {
         noteDao.delete(noteModel)
         onSuccess()
     }
-
 }

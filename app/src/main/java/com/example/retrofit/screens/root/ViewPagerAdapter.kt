@@ -6,10 +6,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.retrofit.screens.notes.start.NotesFragment
 import com.example.retrofit.screens.weather.home.WeatherFragment
 
-class ViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
-    override fun getItemCount(): Int {
-        return 2
-    }
+class ViewPagerAdapter(
+    fragmentActivity: FragmentActivity
+): FragmentStateAdapter(fragmentActivity) {
+
+    override fun getItemCount(): Int = 2
 
     override fun createFragment(position: Int): Fragment {
         return when(position){

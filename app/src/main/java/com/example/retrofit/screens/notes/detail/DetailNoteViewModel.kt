@@ -10,11 +10,11 @@ import kotlinx.coroutines.launch
 class DetailNoteViewModel(
     val repository: DatabaseRepository
 ): ViewModel() {
+
     fun delete(noteModel: NoteModel, onSuccess:() -> Unit) =
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteNote(noteModel){
                 onSuccess()
             }
         }
-
 }

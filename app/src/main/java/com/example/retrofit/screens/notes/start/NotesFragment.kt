@@ -43,7 +43,5 @@ class NotesFragment : Fragment() {
         binding.btnNext.setOnClickListener{
             findNavController().navigate(R.id.action_notesFragment_to_addNoteFragment)
         }
-
     }
-
 }

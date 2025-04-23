@@ -18,7 +18,7 @@ class AddNoteFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAddNoteBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -42,7 +42,5 @@ class AddNoteFragment : Fragment() {
         binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_addNoteFragment_to_notesFragment)
         }
-
     }
-
 }

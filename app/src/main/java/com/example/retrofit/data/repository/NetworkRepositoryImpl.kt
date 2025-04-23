@@ -6,6 +6,7 @@ import com.example.retrofit.data.api.WeatherApi
 import retrofit2.Response
 
 class NetworkRepositoryImpl(private val api: WeatherApi): NetworkRepository {
+
     override suspend fun getWeather(city: String): Response<WeatherResponse> {
         return api.getWeather(city)
     }

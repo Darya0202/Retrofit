@@ -44,5 +44,4 @@ class DetailWeatherFragment : Fragment() {
             findNavController().navigate(R.id.action_detailWeatherFragment_to_weatherFragment)
         }
     }
-
 }

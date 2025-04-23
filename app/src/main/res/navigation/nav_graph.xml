@@ -9,7 +9,7 @@
         android:id="@+id/splashFragment"
         android:name="com.example.retrofit.screens.weather.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_rootFragment"
             app:destination="@id/rootFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/weatherFragment"
         android:name="com.example.retrofit.screens.weather.home.WeatherFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_weather" >
+        tools:layout="@layout/fragment_weather">
         <action
             android:id="@+id/action_weatherFragment_to_detailWeatherFragment"
             app:destination="@id/detailWeatherFragment" />
@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/detailWeatherFragment"
         android:name="com.example.retrofit.screens.weather.detail.DetailWeatherFragment"
-        android:label="DetailFragment" >
+        android:label="DetailFragment">
         <action
             android:id="@+id/action_detailWeatherFragment_to_weatherFragment"
             app:destination="@id/weatherFragment" />
@@ -37,7 +37,7 @@
         android:id="@+id/addNoteFragment"
         android:name="com.example.retrofit.screens.notes.addnote.AddNoteFragment"
         android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note" >
+        tools:layout="@layout/fragment_add_note">
         <action
             android:id="@+id/action_addNoteFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
@@ -46,7 +46,7 @@
         android:id="@+id/detailNoteFragment"
         android:name="com.example.retrofit.screens.notes.detail.DetailNoteFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail_note" >
+        tools:layout="@layout/fragment_detail_note">
         <action
             android:id="@+id/action_detailNoteFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
@@ -55,7 +55,7 @@
         android:id="@+id/notesFragment"
         android:name="com.example.retrofit.screens.notes.start.NotesFragment"
         android:label="fragment_start"
-        tools:layout="@layout/fragment_notes" >
+        tools:layout="@layout/fragment_notes">
         <action
             android:id="@+id/action_notesFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
