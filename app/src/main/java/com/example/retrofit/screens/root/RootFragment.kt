@@ -10,6 +10,7 @@ import com.example.retrofit.databinding.FragmentRootBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 class RootFragment : Fragment() {
+
     private var _binding: FragmentRootBinding? = null
     private val binding get() = _binding!!
 

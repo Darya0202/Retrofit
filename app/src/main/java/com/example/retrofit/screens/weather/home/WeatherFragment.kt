@@ -11,6 +11,7 @@ import com.example.retrofit.R
 import com.example.retrofit.databinding.FragmentWeatherBinding
 
 class WeatherFragment : Fragment() {
+
     private var _binding: FragmentWeatherBinding? = null
     private val binding get() = _binding!!
 

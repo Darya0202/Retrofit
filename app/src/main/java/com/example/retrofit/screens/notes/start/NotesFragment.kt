@@ -12,6 +12,7 @@ import com.example.retrofit.data.db.NoteModel
 import com.example.retrofit.databinding.FragmentNotesBinding
 
 class NotesFragment : Fragment() {
+
     private var _binding: FragmentNotesBinding? = null
     private val binding get() = _binding!!
 
