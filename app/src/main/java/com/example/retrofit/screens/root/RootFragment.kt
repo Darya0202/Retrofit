@@ -39,5 +39,14 @@ class RootFragment : Fragment() {
                 }
             }
         }.attach()
+
+        val startTab = arguments?.getInt(ARG_START_TAB) ?: TAB_WEATHER
+        binding.viewPager.setCurrentItem(startTab, false)
+    }
+
+    companion object {
+        const val ARG_START_TAB = "start_tab"
+        const val TAB_WEATHER = 0
+        const val TAB_NOTES = 1
     }
 }

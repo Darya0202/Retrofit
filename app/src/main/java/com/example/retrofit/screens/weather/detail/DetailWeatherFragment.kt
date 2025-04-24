@@ -10,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.retrofit.R
 import com.example.retrofit.databinding.FragmentDetailWeatherBinding
+import com.example.retrofit.screens.root.RootFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailWeatherFragment : Fragment() {
 
@@ -28,7 +30,7 @@ class DetailWeatherFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val city = arguments?.getString("city") ?: return
-        val viewModel = ViewModelProvider(this)[DetailWeatherViewModel::class.java]
+        val viewModel: DetailWeatherViewModel by viewModel()
         viewModel.fetchWeather(city)
         binding.city.text = city
 
@@ -40,8 +42,12 @@ class DetailWeatherFragment : Fragment() {
                 .into(binding.image)
         }
 
+        val bundle = Bundle().apply {
+            putInt(RootFragment.ARG_START_TAB, RootFragment.TAB_WEATHER)
+        }
+
         binding.buttonExit.setOnClickListener{
-            findNavController().navigate(R.id.action_detailWeatherFragment_to_weatherFragment)
+            findNavController().navigate(R.id.action_detailWeatherFragment_to_rootFragment,bundle)
         }
     }
 }

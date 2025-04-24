@@ -12,4 +12,5 @@ val databaseModule = module {
         ).build()
     }
     single { get<NoteDatabase>().getNoteDao() }
+
 }

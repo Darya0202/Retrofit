@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.retrofit.R
 import com.example.retrofit.databinding.FragmentWeatherBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WeatherFragment : Fragment() {
 
@@ -25,11 +26,11 @@ class WeatherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel = ViewModelProvider(this)[WeatherViewModel::class.java]
+        val viewModel: WeatherViewModel by viewModel()
 
         val adapter = WeatherAdapter { city ->
             findNavController().navigate(
-                R.id.action_weatherFragment_to_detailWeatherFragment,
+                R.id.action_to_detailWeatherFragment,
                 Bundle().apply { putString("city", city) }
             )
         }

@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.retrofit.R
 import com.example.retrofit.data.db.NoteModel
 import com.example.retrofit.databinding.FragmentNotesBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NotesFragment : Fragment() {
 
@@ -27,13 +29,13 @@ class NotesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = ViewModelProvider(this)[NotesViewModel::class.java]
+        val viewModel: NotesViewModel by viewModel()
 
         val adapter = NoteAdapter{ note: NoteModel ->
             val bundle = Bundle().apply {
                 putSerializable("note", note)
             }
-            findNavController().navigate(R.id.action_notesFragment_to_detailNoteFragment, bundle)
+            findNavController().navigate(R.id.action_to_detailNoteFragment, bundle)
         }
         binding.rvNotes.adapter = adapter
 
@@ -42,7 +44,7 @@ class NotesFragment : Fragment() {
         }
 
         binding.btnNext.setOnClickListener{
-            findNavController().navigate(R.id.action_notesFragment_to_addNoteFragment)
+            findNavController().navigate(R.id.action_to_addNoteFragment)
         }
     }
 }

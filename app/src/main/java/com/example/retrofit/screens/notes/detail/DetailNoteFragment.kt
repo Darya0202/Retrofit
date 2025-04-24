@@ -10,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.retrofit.R
 import com.example.retrofit.data.db.NoteModel
 import com.example.retrofit.databinding.FragmentDetailNoteBinding
+import com.example.retrofit.screens.root.RootFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailNoteFragment : Fragment() {
 
@@ -27,7 +29,7 @@ class DetailNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = ViewModelProvider(this)[DetailNoteViewModel::class.java]
+        val viewModel: DetailNoteViewModel by viewModel()
 
         val currentNote: NoteModel = arguments?.getSerializable("note") as? NoteModel
             ?: throw IllegalArgumentException("Note is missing")
@@ -38,12 +40,17 @@ class DetailNoteFragment : Fragment() {
         binding.btnDelete.setOnClickListener{
             viewModel.delete(currentNote){
                 requireActivity().runOnUiThread {
-                    findNavController().navigate(R.id.action_detailNoteFragment_to_notesFragment)
+                    findNavController().navigate(R.id.action_detailNoteFragment_to_rootFragment)
                 }
             }
         }
+
+        val bundle = Bundle().apply {
+            putInt(RootFragment.ARG_START_TAB, RootFragment.TAB_NOTES)
+        }
+
         binding.btnBack.setOnClickListener{
-            findNavController().navigate(R.id.action_detailNoteFragment_to_notesFragment)
+            findNavController().navigate(R.id.action_detailNoteFragment_to_rootFragment, bundle)
         }
     }
 }
