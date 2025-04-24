@@ -36,16 +36,16 @@ class DetailNoteFragment : Fragment() {
         binding.tvTitleDetail.text = currentNote.title
         binding.tvDescDetail.text = currentNote.description
 
+        val bundle = Bundle().apply {
+            putInt(RootFragment.ARG_START_TAB, RootFragment.TAB_NOTES)
+        }
+
         binding.btnDelete.setOnClickListener{
             viewModel.delete(currentNote){
                 requireActivity().runOnUiThread {
-                    findNavController().navigate(R.id.action_detailNoteFragment_to_rootFragment)
+                    findNavController().navigate(R.id.action_detailNoteFragment_to_rootFragment, bundle)
                 }
             }
-        }
-
-        val bundle = Bundle().apply {
-            putInt(RootFragment.ARG_START_TAB, RootFragment.TAB_NOTES)
         }
 
         binding.btnBack.setOnClickListener{
