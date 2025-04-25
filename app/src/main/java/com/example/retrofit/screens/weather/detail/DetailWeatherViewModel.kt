@@ -9,7 +9,7 @@ import com.example.retrofit.core.repository.NetworkRepository
 import kotlinx.coroutines.launch
 
 class DetailWeatherViewModel(
-    val repository: NetworkRepository
+    private val repository: NetworkRepository
 ): ViewModel() {
 
     val weather = MutableLiveData<WeatherResponse>()
