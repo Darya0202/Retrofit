@@ -1,15 +1,20 @@
 package com.example.retrofit.screens.weather.detail
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.retrofit.R
 import com.example.retrofit.databinding.FragmentDetailWeatherBinding
 import com.example.retrofit.screens.root.RootFragment
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailWeatherFragment : Fragment() {
@@ -25,6 +30,7 @@ class DetailWeatherFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("UnsafeRepeatOnLifecycleDetector")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -33,12 +39,20 @@ class DetailWeatherFragment : Fragment() {
         viewModel.fetchWeather(city)
         binding.city.text = city
 
-        viewModel.weather.observe(viewLifecycleOwner) { weather ->
-            binding.weatherDescriptions.text = weather.current?.weatherDescriptions?.firstOrNull() ?: "No description"
-            binding.degrees.text = getString(R.string.temperature, weather.current?.temperature ?: 0)
-            Glide.with(binding.image.context)
-                .load(weather.current?.weatherIcons?.firstOrNull())
-                .into(binding.image)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.weather.collect { weather ->
+                    weather?.let {
+                        binding.weatherDescriptions.text =
+                            weather.current?.weatherDescriptions?.firstOrNull() ?: "No description"
+                        binding.degrees.text =
+                            getString(R.string.temperature, weather.current?.temperature ?: 0)
+                        Glide.with(binding.image.context)
+                            .load(weather.current?.weatherIcons?.firstOrNull())
+                            .into(binding.image)
+                    }
+                }
+            }
         }
 
         val bundle = Bundle().apply {

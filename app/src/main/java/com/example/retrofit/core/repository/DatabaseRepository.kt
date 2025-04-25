@@ -1,11 +1,11 @@
 package com.example.retrofit.core.repository
 
-import androidx.lifecycle.LiveData
 import com.example.retrofit.data.db.NoteModel
+import kotlinx.coroutines.flow.Flow
 
 interface DatabaseRepository {
 
-    val allNotes: LiveData<List<NoteModel>>
+    val allNotes: Flow<List<NoteModel>>
 
     suspend fun insertNote(noteModel: NoteModel, onSuccess: () -> Unit)
 
